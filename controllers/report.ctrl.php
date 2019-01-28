@@ -741,6 +741,10 @@ class ReportController extends Controller {
 						    $previousDomain = $currentDomain;
 						}
 						
+						if(SP_DEBUG){
+							echo "<p class='note' style='text-align:left;'>url: $url | websiteUrl: $websiteUrl</p>";
+						}
+						
 						if($this->showAll || (stristr($url, "http://" . $websiteUrl) || stristr($url, "https://" . $websiteUrl)) ){
 
 							if ($this->showAll && (stristr($url, "http://" . $websiteUrl) || stristr($url, "https://" . $websiteUrl)) ) {
@@ -748,7 +752,7 @@ class ReportController extends Controller {
 							} else {
 								$matchInfo['found'] = 0;
 							}
-							
+
 							$matchInfo['url'] = $url;
 							$matchInfo['title'] = strip_tags($matches[$this->seList[$seInfoId]['title_index']][$i]);
 							$matchInfo['description'] = strip_tags($matches[$this->seList[$seInfoId]['description_index']][$i]);
